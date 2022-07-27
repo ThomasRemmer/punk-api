@@ -1,5 +1,5 @@
 import {setState, useEffect} from "react";
-import './App.css';
+import './App.scss';
 import NavContainer from "./Containers/NavContainer/NavContainer";
 import CardContainer from "./Containers/CardContainer/CardContainer";
 const [beers,setBeers] = setState("")
@@ -15,7 +15,7 @@ const getBeers = async () => {
   setBeers(data.results);
 };
 
-useEffect(() => { getBeers(); }, [ph, classic, abv, input]);
+// useEffect(() => { getBeers(); }, [ph, classic, abv, input]);
 
 const handlePh = (e) => {
   if (e.target.checked === true){
@@ -50,7 +50,7 @@ const App =() => {
         <NavContainer />
       </nav>
       <main>
-        <CardContainer />
+        <CardContainer beers={beers}/>
       </main>
       </>
   );
