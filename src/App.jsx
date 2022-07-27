@@ -14,7 +14,7 @@ const App =() => {
   
   const getBeers = async () => {
     // let query =`${classic}&${abv}&${input}`
-    const url = `https://api.punkapi.com/v2/beers/`;
+    const url = `https://api.punkapi.com/v2/beers?&per_page=10`;
     const res = await fetch(url);
     const data = await res.json();
     setBeers(data);
@@ -59,7 +59,7 @@ const App =() => {
         
       </nav>
       <main>
-        
+        <CardContainer beers={beers} />
       </main>
       </>
   );

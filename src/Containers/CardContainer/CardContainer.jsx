@@ -1,17 +1,18 @@
 import Card from "../../Components/Card/Card"
+import "./CardContainer.scss"
 
 const CardContainer = ({beers}) => {
 
 
     return (
-        <div className="profile-container">
+        <div className="card-container">
             {beers.map((beer) => (
             <Card 
-                id={beer.id} 
+                key={beer.id} 
                 name={beer.name} 
                 tag={beer.tagline} 
                 desc={beer.description} 
-                img={beer.img_url} 
+                img={beer.image_url} 
                 abv={beer.abv} 
                 ph={beer.ph} 
                 date={beer.first_brewed} />
