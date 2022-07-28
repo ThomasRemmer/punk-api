@@ -14,7 +14,7 @@ const App =() => {
   
   const getBeers = async () => {
     // let query =`${classic}&${abv}&${input}`
-    const url = `https://api.punkapi.com/v2/beers?&per_page=10`;
+    const url = `https://api.punkapi.com/v2/beers?&per_page=80`;
     const res = await fetch(url);
     const data = await res.json();
     setBeers(data);
@@ -22,41 +22,43 @@ const App =() => {
   };
   
   useEffect(() => {
-    getBeers(ph, classic, abv, input);
+    getBeers();
   }, [ph, classic, abv, input]);
   
   
-  // const handlePh = (e) => {
-  //   if (e.target.checked === true){
-  //     setPh(true)
-  //   } else {
-  //     setPh(false)
-  //   }
-  // }
+  const handlePh = (e) => {
+    if (e.target.checked === true){
+      setPh(true)
+    } else {
+      setPh(false)
+    }
+  }
   
-  // const handleAbv = (e) => {
-  //   if (e.target.checked === true){
-  //     setAbv("abv_gt=6")
-  //   }
-  // }
+  const handleAbv = (e) => {
+    if (e.target.checked === true){
+      setAbv("abv_gt=6")
+    }
+  }
   
-  // const handleClassic = (e) => {
-  //   if (e.target.checked === true){
-  //     setClassic("brewed_beffore=01/2010")
-  //   }
-  // }
+  const handleClassic = (e) => {
+    if (e.target.checked === true){
+      setClassic("brewed_beffore=01/2010")
+    }
+  }
   
-  // const handleInput = (e) => {
-  //   if (e.target.value !== "") {
-  //     setInput(`beer_name=${e.target.value}`)
-  //   }
-  // }
+  const handleInput = (e) => {
+    if (e.target.value !== "") {
+      setInput(`beer_name=${e.target.value}`)
+    } else {
+      setInput("")
+    }
+  }
   
   console.log(beers)
   return (
       <>
       <nav>
-        
+        <NavContainer checkPh={handlePh} checkAbv={handleAbv} checkClassic={handleClassic} checkSearch={handleInput} />
       </nav>
       <main>
         <CardContainer beers={beers} />
