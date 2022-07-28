@@ -13,8 +13,8 @@ const App =() => {
   const [input, setInput] =useState("")
   
   const getBeers = async () => {
-    // let query =`${classic}&${abv}&${input}`
-    const url = `https://api.punkapi.com/v2/beers?&per_page=80`;
+    let query =`${input}&${abv}&${classic}&`
+    const url = `https://api.punkapi.com/v2/beers?&${query}&per_page=80`;
     const res = await fetch(url);
     const data = await res.json();
     setBeers(data);
@@ -22,28 +22,31 @@ const App =() => {
   };
   
   useEffect(() => {
-    getBeers();
+    getBeers(ph, classic, abv, input);
   }, [ph, classic, abv, input]);
   
   
   const handlePh = (e) => {
+    let beerArr = beers
     if (e.target.checked === true){
-      setPh(true)
+      
+      let filterArr = beerArr.filter(beer => beer.ph < 4)
+      setBeers(filterArr)
     } else {
-      setPh(false)
+      getBeers()
     }
   }
   
   const handleAbv = (e) => {
     if (e.target.checked === true){
       setAbv("abv_gt=6")
-    }
+    } else setAbv("")
   }
   
   const handleClassic = (e) => {
     if (e.target.checked === true){
-      setClassic("brewed_beffore=01/2010")
-    }
+      setClassic("brewed_before=01/2010")
+    } else setClassic("")
   }
   
   const handleInput = (e) => {
@@ -52,6 +55,7 @@ const App =() => {
     } else {
       setInput("")
     }
+    
   }
   
   console.log(beers)
