@@ -8,23 +8,25 @@
     border-radius: 3px;
     overflow: hidden;
     padding: 1rem;
-    height:100%;
-  }
-  .card__image {
+    height: 100%;
+}
+
+.card__image {
     max-width: 250px;
     width: 100px;
     height: 200px;
-  }
+}
 
-  .card__content {
+.card__content {
     padding: 0.5rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     width: 100%;
     word-break: break-word;
-  }
-  .card__heading {
+}
+
+.card__heading {
     font-size: 1.5rem;
     font-weight: normal;
-  }
+}
